@@ -16,7 +16,7 @@ import {
 import MemeTemplateSelector from '../MemeTemplateSelector/MemeTemplateSelector';
 import TextEditor from '../TextEditor/TextEditor';
 import type { MemeTemplate, TextBox } from '@/types/meme';
-import { defaultMemeTemplates } from '@/data/memeTemplates.ts';
+import { defaultMemeTemplates } from '@/data/memeTemplates';
 
 export default function MemeGenerator() {
   const [selectedTemplate, setSelectedTemplate] = useState<MemeTemplate | null>(
@@ -335,11 +335,10 @@ export default function MemeGenerator() {
                     {textBoxes.map((box) => (
                       <div
                         key={box.id}
-                        className={`flex items-center p-2 border rounded cursor-pointer ${
-                          selectedTextBoxId === box.id
+                        className={`flex items-center p-2 border rounded cursor-pointer ${selectedTextBoxId === box.id
                             ? 'border-primary bg-primary/10'
                             : 'border-gray-200'
-                        }`}
+                          }`}
                         onClick={() => handleTextBoxSelect(box.id)}
                       >
                         <FontAwesomeIcon
