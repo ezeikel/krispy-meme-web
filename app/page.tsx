@@ -1,4 +1,4 @@
-import MemeGenerator from "@/components/MemeGenerator/MemeGenerator"
+import MemeGenerator from '@/components/MemeGenerator/MemeGenerator';
 
 export default function Home() {
   return (
@@ -7,13 +7,12 @@ export default function Home() {
         <div className="max-w-4xl mx-auto mb-12 text-center">
           <h1 className="text-4xl font-bold mb-4">Create Your Perfect Meme</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Select a meme template, add your custom text, adjust the position, color, and size, then download your
-            creation in seconds!
+            Select a meme template, add your custom text, adjust the position,
+            color, and size, then download your creation in seconds!
           </p>
         </div>
         <MemeGenerator />
       </div>
     </main>
-  )
+  );
 }
-

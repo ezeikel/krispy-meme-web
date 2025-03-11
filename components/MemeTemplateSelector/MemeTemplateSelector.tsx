@@ -1,34 +1,37 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import type { MemeTemplate } from "@/types/meme"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import Image from "next/image"
+import { useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import type { MemeTemplate } from '@/types/meme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
 
 type MemeTemplateSelectorProps = {
-  templates: MemeTemplate[]
-  onSelectTemplate: (template: MemeTemplate) => void
-  selectedTemplateId?: string
-}
+  templates: MemeTemplate[];
+  onSelectTemplate: (template: MemeTemplate) => void;
+  selectedTemplateId?: string;
+};
 
 export default function MemeTemplateSelector({
   templates,
   onSelectTemplate,
   selectedTemplateId,
 }: MemeTemplateSelectorProps) {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState('');
 
   const filteredTemplates = templates.filter((template) =>
     template.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+  );
 
   return (
     <div className="space-y-4">
       <div className="relative">
-        <FontAwesomeIcon icon={faSearch} className="absolute left-2.5 top-2.5 size-4 text-gray-500" />
+        <FontAwesomeIcon
+          icon={faSearch}
+          className="absolute left-2.5 top-2.5 size-4 text-gray-500"
+        />
         <Input
           type="search"
           placeholder="Search templates..."
@@ -43,12 +46,15 @@ export default function MemeTemplateSelector({
           {filteredTemplates.map((template) => (
             <div
               key={template.id}
-              className={`relative cursor-pointer rounded-md overflow-hidden border-2 transition-all ${selectedTemplateId === template.id ? "border-primary" : "border-transparent hover:border-gray-300"
-                }`}
+              className={`relative cursor-pointer rounded-md overflow-hidden border-2 transition-all ${
+                selectedTemplateId === template.id
+                  ? 'border-primary'
+                  : 'border-transparent hover:border-gray-300'
+              }`}
               onClick={() => onSelectTemplate(template)}
             >
               <Image
-                src={template.url || "/placeholder.svg"}
+                src={template.url || '/placeholder.svg'}
                 alt={template.name}
                 className="w-full h-auto object-cover aspect-square"
                 width={template.width}
@@ -61,11 +67,12 @@ export default function MemeTemplateSelector({
           ))}
 
           {filteredTemplates.length === 0 && (
-            <div className="col-span-2 py-8 text-center text-gray-500">No templates found matching "{searchQuery}"</div>
+            <div className="col-span-2 py-8 text-center text-gray-500">
+              No templates found matching &ldquo;{searchQuery}&rdquo;
+            </div>
           )}
         </div>
       </ScrollArea>
     </div>
-  )
+  );
 }
-

@@ -1,17 +1,21 @@
-"use client"
+'use client';
 
-import type { TextBox } from "@/types/meme"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFont, faArrowsUpDownLeftRight, faFillDrip } from "@fortawesome/free-solid-svg-icons"
+import type { TextBox } from '@/types/meme';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFont,
+  faArrowsUpDownLeftRight,
+  faFillDrip,
+} from '@fortawesome/free-solid-svg-icons';
 
 type TextEditorProps = {
-  textBox: TextBox
-  onUpdate: (updates: Partial<TextBox>) => void
-}
+  textBox: TextBox;
+  onUpdate: (updates: Partial<TextBox>) => void;
+};
 
 export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
   return (
@@ -24,7 +28,11 @@ export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
           <FontAwesomeIcon icon={faFillDrip} className="size-4 mr-2" /> Style
         </TabsTrigger>
         <TabsTrigger value="position">
-          <FontAwesomeIcon icon={faArrowsUpDownLeftRight} className="size-4 mr-2" /> Position
+          <FontAwesomeIcon
+            icon={faArrowsUpDownLeftRight}
+            className="size-4 mr-2"
+          />{' '}
+          Position
         </TabsTrigger>
       </TabsList>
 
@@ -56,7 +64,10 @@ export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
         <div className="space-y-2">
           <Label htmlFor="text-color">Text Color</Label>
           <div className="flex items-center gap-2">
-            <div className="size-8 rounded border" style={{ backgroundColor: textBox.color }} />
+            <div
+              className="size-8 rounded border"
+              style={{ backgroundColor: textBox.color }}
+            />
             <Input
               id="text-color"
               type="color"
@@ -70,7 +81,10 @@ export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
         <div className="space-y-2">
           <Label htmlFor="outline-color">Outline Color</Label>
           <div className="flex items-center gap-2">
-            <div className="size-8 rounded border" style={{ backgroundColor: textBox.outlineColor }} />
+            <div
+              className="size-8 rounded border"
+              style={{ backgroundColor: textBox.outlineColor }}
+            />
             <Input
               id="outline-color"
               type="color"
@@ -82,7 +96,9 @@ export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="outline-width">Outline Width: {textBox.outlineWidth}px</Label>
+          <Label htmlFor="outline-width">
+            Outline Width: {textBox.outlineWidth}px
+          </Label>
           <Slider
             id="outline-width"
             min={0}
@@ -97,15 +113,21 @@ export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
       <TabsContent value="position" className="space-y-4 pt-4">
         <div className="bg-muted/30 p-3 rounded-md border border-muted">
           <p className="text-sm flex items-center gap-2">
-            <FontAwesomeIcon icon={faArrowsUpDownLeftRight} className="size-4" />
+            <FontAwesomeIcon
+              icon={faArrowsUpDownLeftRight}
+              className="size-4"
+            />
             <span>
-              <strong>Drag directly on canvas:</strong> Click and drag the text directly on the meme to reposition it.
+              <strong>Drag directly on canvas:</strong> Click and drag the text
+              directly on the meme to reposition it.
             </span>
           </p>
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="position-x">X Position: {Math.round(textBox.x)}</Label>
+          <Label htmlFor="position-x">
+            X Position: {Math.round(textBox.x)}
+          </Label>
           <Slider
             id="position-x"
             min={0}
@@ -117,7 +139,9 @@ export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="position-y">Y Position: {Math.round(textBox.y)}</Label>
+          <Label htmlFor="position-y">
+            Y Position: {Math.round(textBox.y)}
+          </Label>
           <Slider
             id="position-y"
             min={0}
@@ -129,6 +153,5 @@ export default function TextEditor({ textBox, onUpdate }: TextEditorProps) {
         </div>
       </TabsContent>
     </Tabs>
-  )
+  );
 }
-
